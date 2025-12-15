@@ -61,13 +61,13 @@ jobs:
         uses: hmarr/debug-action@v3.0.0
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
@@ -82,7 +82,7 @@ jobs:
         run: echo "result=${{ hashFiles('yarn.lock') }}" >>$GITHUB_OUTPUT
       - id: cache
         name: Cache dependencies
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v5.0.1
         with:
           key: ${{ steps.cache-key.outputs.result }}
           path: ${{ env.CACHE_PATH }}
@@ -95,21 +95,21 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v5.0.1
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -123,20 +123,20 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v5.0.1
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -159,20 +159,20 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v5.0.1
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -187,14 +187,14 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: spelling
         name: Check spelling
-        uses: streetsidesoftware/cspell-action@v8.0.0
+        uses: streetsidesoftware/cspell-action@v8.1.1
         with:
           config: .cspell.json
           inline: error
@@ -215,21 +215,21 @@ jobs:
           echo "result=${{ format('@{0}-{1}-{2}.tgz', github.repository_owner, github.event.repository.name, needs.preflight.outputs.version) }}" >>$GITHUB_OUTPUT
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v4.3.0
+        uses: actions/cache@v5.0.1
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -246,7 +246,7 @@ jobs:
         run: yarn pack -o ${{ steps.tarball.outputs.result }}
       - id: archive
         name: Archive production artifact
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6.0.0
         with:
           name: ${{ steps.tarball.outputs.result }}
           path: ${{ steps.tarball.outputs.result }}

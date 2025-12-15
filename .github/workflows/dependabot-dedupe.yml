@@ -40,20 +40,20 @@ jobs:
         uses: hmarr/debug-action@v3.0.0
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v2.1.4
+        uses: actions/create-github-app-token@v2.2.1
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
       - id: checkout
         name: Checkout ${{ github.head_ref }}
-        uses: actions/checkout@v5.0.1
+        uses: actions/checkout@v6.0.1
         with:
           persist-credentials: false
           ref: ${{ github.head_ref }}
           token: ${{ steps.bot-token.outputs.token }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
