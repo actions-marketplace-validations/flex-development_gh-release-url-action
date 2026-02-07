@@ -61,7 +61,7 @@ jobs:
         uses: hmarr/debug-action@v3.0.0
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           persist-credentials: false
           ref: ${{ env.REF }}
@@ -82,7 +82,7 @@ jobs:
         run: echo "result=${{ hashFiles('yarn.lock') }}" >>$GITHUB_OUTPUT
       - id: cache
         name: Cache dependencies
-        uses: actions/cache@v5.0.2
+        uses: actions/cache@v5.0.3
         with:
           key: ${{ steps.cache-key.outputs.result }}
           path: ${{ env.CACHE_PATH }}
@@ -95,7 +95,7 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -109,7 +109,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v5.0.2
+        uses: actions/cache@v5.0.3
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -123,7 +123,7 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           persist-credentials: false
           ref: ${{ env.REF }}
@@ -136,7 +136,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v5.0.2
+        uses: actions/cache@v5.0.3
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -159,7 +159,7 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           persist-credentials: false
           ref: ${{ env.REF }}
@@ -172,7 +172,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v5.0.2
+        uses: actions/cache@v5.0.3
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
@@ -187,14 +187,14 @@ jobs:
     steps:
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
           persist-credentials: false
           ref: ${{ env.REF }}
       - id: spelling
         name: Check spelling
-        uses: streetsidesoftware/cspell-action@v8.1.2
+        uses: streetsidesoftware/cspell-action@v8.2.0
         with:
           config: .cspell.json
           inline: error
@@ -215,7 +215,7 @@ jobs:
           echo "result=${{ format('@{0}-{1}-{2}.tgz', github.repository_owner, github.event.repository.name, needs.preflight.outputs.version) }}" >>$GITHUB_OUTPUT
       - id: checkout
         name: Checkout ${{ env.REF_NAME }}
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
           persist-credentials: false
@@ -229,7 +229,7 @@ jobs:
           node-version-file: .nvmrc
       - id: cache
         name: Restore dependencies cache
-        uses: actions/cache@v5.0.2
+        uses: actions/cache@v5.0.3
         with:
           key: ${{ needs.preflight.outputs.cache-key }}
           path: ${{ env.CACHE_PATH }}
