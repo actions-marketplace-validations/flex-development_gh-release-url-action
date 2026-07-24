@@ -112,7 +112,7 @@ jobs:
     steps:
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v2.2.1
+        uses: actions/create-github-app-token@v3.1.1
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
@@ -135,7 +135,7 @@ jobs:
     steps:
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v2.2.1
+        uses: actions/create-github-app-token@v3.1.1
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
@@ -149,7 +149,7 @@ jobs:
           token: ${{ steps.bot-token.outputs.token }}
       - id: node
         name: Setup Node.js
-        uses: actions/setup-node@v6.2.0
+        uses: actions/setup-node@v6.4.0
         with:
           cache: yarn
           cache-dependency-path: yarn.lock
@@ -190,7 +190,7 @@ jobs:
     steps:
       - id: bot-token
         name: Get bot token
-        uses: actions/create-github-app-token@v2.2.1
+        uses: actions/create-github-app-token@v3.1.1
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
